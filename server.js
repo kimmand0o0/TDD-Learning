@@ -25,5 +25,12 @@ app.get("/", (request, response) => {
   response.send("Hello World");
 });
 
+// error handler
+app.use((error, request, response, next) => {
+  response.status(500).json({ message: error.message });
+});
+
 app.listen(PORT);
 console.log(`Running on port ${PORT}`);
+
+module.exports = app;
